@@ -1,0 +1,12 @@
+@antsuml
+by Ants UML Diagram designers
+Actors and usecases
+
+User--->( enter cash card--->:asynchronous)---> ATMif
+[opt] : system--->( display no cash card--->:asynchronous)---> userUser--->( input PIN number--->:asynchronous)---> ATMATM--->( check PIN number--->:asynchronous)---> systemif
+[opt] : system--->( authorization process finished--->:asynchronous)---> AtmUser--->( enter amount--->:lost)---> ATMif
+[opt] : --->( no card accepted and message displayed--->:found)---> userif
+[opt] : ATM--->( card kept--->:self)---> ATMif
+[opt] : system--->( transaction--->:asynchronous)---> Systemif
+[opt] : system--->( money dispensed--->:lost)---> userif
+[opt] : [loop]:system--->( amount logged--->:lost)---> user

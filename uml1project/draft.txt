@@ -1,0 +1,29 @@
+@startuml
+user->atm: enter cash card
+opt  no cash card is in ATM
+system->user: display no cash card
+end
+user->atm: input PIN number
+atm->system: check PIN number
+opt  password and serial number are ok
+system->atm: authorization process finished
+end
+user->atm: enter amount
+opt  ATM is running out of money
+->user: no card accepted and message displayed
+end
+opt  card was entered more than three times in row at ATM and password was wrong time
+atm->atm: card kept
+end
+opt  it is too much withdrawal
+system->system: transaction
+end
+opt  transaction is successful
+system->user: money dispensed
+end
+opt  money is dispensed
+loop
+system->user: amount logged
+end
+end
+@enduml
